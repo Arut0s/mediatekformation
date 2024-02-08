@@ -109,7 +109,7 @@ class PlaylistsController extends AbstractController
         $playlist = $this->playlistRepository->find($id);
         $playlistCategories = $this->categorieRepository->findAllForOnePlaylist($id);
         $playlistFormations = $this->formationRepository->findAllForOnePlaylist($id);
-        return $this->render(self::PAGEPLAYLISTS, [
+        return $this->render("pages/playlist.html.twig", [
                     'playlist' => $playlist,
                     'playlistcategories' => $playlistCategories,
                     'playlistformations' => $playlistFormations

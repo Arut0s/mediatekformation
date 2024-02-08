@@ -16,6 +16,13 @@
                         </div>
                     </form>                    
                 </th>
+                
+                 <th class="text-left align-top" scope="col">
+                    nombre de vidéo(s)<br />
+                    <a href="{{ path('playlists.sort', {champ:'count', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('playlists.sort', {champ:'count', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>                  
+                </th>
+               
                 <th class="text-left align-top" scope="col">
                     catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('playlists.findallcontain', {champ:'id', table:'categories'}) }}">
@@ -46,7 +53,10 @@
                             <h5 class="text-info">
                                 {{ playlists[k].name }}
                             </h5>
-                        </td>                 
+                        </td>      
+                         <td class="text-left">
+                              {{ playlists[k].count }}                         
+                        </td>  
                         <td class="text-left">
                             {% set categories = playlists[k].categoriesplaylist %}
                             {% if categories|length > 0  %}

@@ -18,6 +18,8 @@ class Playlist
      * @ORM\Column(type="integer")
      */
     private $id;
+    
+    
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -33,10 +35,23 @@ class Playlist
      * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="playlist")
      */
     private $formations;
+    
+    private int $count;
 
     public function __construct()
     {
         $this->formations = new ArrayCollection();
+        $this->count = $this->getCount();
+    }
+    
+     public function getCount(): int 
+    {
+        $count = 0;
+        foreach($this->formations as $formation)
+        {
+            $count = $count+1;
+        }
+        return $count;
     }
 
     public function getId(): ?int
@@ -75,6 +90,8 @@ class Playlist
     {
         return $this->formations;
     }
+    
+   
 
     public function addFormation(Formation $formation): self
     {
