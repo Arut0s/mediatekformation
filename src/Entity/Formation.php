@@ -31,7 +31,7 @@ class Formation
     private $publishedAt;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=false)
      */
     private $title;
 
@@ -41,7 +41,7 @@ class Formation
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=false)
      */
     private $videoId;
 
