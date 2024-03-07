@@ -28,7 +28,7 @@ class FormationType extends AbstractType{
             
             ->add('publishedAt',DateType::class,[
                 'widget' => 'single_text',
-                'label' => false
+                'label' => false,
                 ])
             ->add('description',null,[
                 'label' => false,
