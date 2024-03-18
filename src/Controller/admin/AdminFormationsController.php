@@ -42,6 +42,7 @@ class AdminFormationsController extends AbstractController{
         ]);
     }
     
+    
     /**
      * @Route("/admin/formation/suppr/{id}", name="admin.formation.suppr")
      * @param int $id

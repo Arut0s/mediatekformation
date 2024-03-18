@@ -18,7 +18,7 @@ class PlaylistsControllerTest extends \Symfony\Bundle\FrameworkBundle\Test\WebTe
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
     }
     
-    public function testFiltreFormations(){
+    public function testFiltrePlaylists(){
         $client = static::createClient();
         $client->request('GET', '/playlists');
         $crawler = $client->submitForm('filtrer', [

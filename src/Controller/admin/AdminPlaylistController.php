@@ -2,7 +2,8 @@
 
 namespace App\Controller\admin;
 
-
+use App\Entity\Playlist;
+use App\Form\PlaylistType;
 use App\Repository\CategorieRepository;
 use App\Repository\FormationRepository;
 use App\Repository\PlaylistRepository;
@@ -18,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @author FENOUILLET Paul
  */
-class AdminPlaylistController extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractController{
+class AdminPlaylistController extends AbstractController{
     
      public function __construct(PlaylistRepository $playlistRepository,
             CategorieRepository $categorieRepository,
@@ -62,7 +63,7 @@ class AdminPlaylistController extends \Symfony\Bundle\FrameworkBundle\Controller
      */
     public function edit(int $id, Request $request): Response {
         $playlist = $this->playlistRepository->find($id);
-        $formPlaylist = $this->createForm(\App\Form\PlaylistType::class, $playlist);
+        $formPlaylist = $this->createForm(PlaylistType::class, $playlist);
 
         $formPlaylist->handleRequest($request);
         if ($formPlaylist->isSubmitted() && $formPlaylist->isValid()) {
@@ -81,8 +82,8 @@ class AdminPlaylistController extends \Symfony\Bundle\FrameworkBundle\Controller
      * @return Response
      */
     public function ajout(Request $request): Response {
-        $playlist = new \App\Entity\Playlist();
-        $formPlaylist = $this->createForm(\App\Form\PlaylistType::class, $playlist);
+        $playlist = new Playlist();
+        $formPlaylist = $this->createForm(PlaylistType::class, $playlist);
 
         $formPlaylist->handleRequest($request);
         if ($formPlaylist->isSubmitted() && $formPlaylist->isValid()) {
